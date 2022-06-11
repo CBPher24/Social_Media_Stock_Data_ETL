@@ -33,9 +33,10 @@ Twitter Dateframe:
 ![Twitter Dataframe](images/Twitter_Clean_DataFrame.PNG)
 
 ### **Load**
-Using SQL file (which can be found in this repository as "schema.sql"), the following required Database and associated tables were created in PostgreSQL:
-- SocialMedia_stocks_DB (database)
-- fb_stocks (table)
-- twitter_stocks (table)
+Using SQL file (which can be found in this repository as "schema.sql"), the following required Database and associated tables were created in pgAdmin using PostgreSQL:
+- Using the pgAdmin 'Create' Option create the following database: SocialMedia_stocks_DB
+- Using the schema.sql, create the following tables:
+    * fb_stocks (table)
+    * twitter_stocks (table)
 
-Newly created tables are loaded with the values from csv by connecting jupyter notebook to PostGreSQL. Using sqlalchemy, created an engine in order to connect to the database. Data is loaded into database tables based on final data structure of dataframes.  
+Newly created tables are loaded with the values from csv by connecting jupyter notebook to the database. Using sqlalchemy, created an engine in order to connect to the database. Data is loaded into database tables based on final data structure of dataframes.  

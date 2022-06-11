@@ -26,11 +26,11 @@ Each social media platform/company table will have the following columns:
 
 Facebook Dataframe:
 
-![Facebook Dataframe](./images/FB_Clean_DataFrame.png)
+![Facebook Dataframe](images/FB_Clean_DataFrame.png)
 
 Twitter Dateframe:
 
-![Twitter Dataframe](./images/Twitter_Clean_DataFrame.png)
+![Twitter Dataframe](images/Twitter_Clean_DataFrame.png)
 
 ### **Load**
 Using SQL file (which can be found in this repository as "schema.sql"), the following required Database and associated tables were created in PostgreSQL:

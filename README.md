@@ -1,13 +1,41 @@
-# Social_Media_Stock_Data_ETL
-pulling data for Twitter and Facebook so stock prices can be compared throughout the years
+# **Social_Media_Stock_Data_ETL**
 
-Project Proposal:
-Cites of data being used to compare:
-https://www.kaggle.com/datasets/amandam1/twitter-daily-stock-prices-20132022
-https://www.kaggle.com/datasets/kalilurrahman/facebook-stock-data-live-and-latest
+*Group Members: Sravitha Matlapudi and Christopher Partee*
 
-The final production will be relational data that we will be pushing into a Postgress SQL table. The data will be joined on the date the stock values were captured.
+Growth is the prime metric for development for any business/company. In the financial domain, stocks are essential to the analysis for growth. We decided to focus particularily on social media platforms which are widely used and monitered by the public. Our purpose is to create a database that contains the daily stocks values for different social media platforms. The final datasets can be either relational or nonrelational. Since we are looking at daily values of stock prices, the data can be related between the dates the data was captured.  
 
-The data we are capturing and pulling together will allow comparisons to be made between Facebook and Twitter's stock information. For each company, the data will have the following: date, open price, highest price, lowest price, closing price, and volume sold. This will allow a quick comparison between the two companies so that someone could compare the price of stock and the volume sold on each day. There will be three columns to be dropped from the data after it is pulled. In the Twitter data, the adjusted closing cost was identical to the closing cost and no relative data was shared with Facebook. In the Facebook data, Dividends and Stock Splits contained only zero value and no relative data was shared with Twitter.
+>>### Datasets to be Used: From Kaggle
+>>- https://www.kaggle.com/datasets/amandam1/twitter-daily-stock-prices-20132022
+>>- https://www.kaggle.com/datasets/kalilurrahman/facebook-stock-data-live-and-latest
 
-<!-- We will be focusing on the trends between two major social media sites comparing the volume and stock prices for each day. We will specifically be looking at the trend of volume sold between the two companies.  -->
+
+## **ETL Processing**
+
+### **Extract**
+The data was retrieved from Kaggle leveraging the data sets in the form of .csv format. The respective files, for twitter daily stocks and facebook daily stocks, can be found in the "Resources" folder.
+
+### **Transform**
+Each social media platform/company table will have the following columns:
+ - date (Primary Key) 
+ - open, high, low, close (daily stock prices) 
+ - volume (daily loads)
+ 
+ This will allow a quick comparison between the two companies so that someone could compare the price of stock and the volume sold on each day. Additionally There are three columns that are to be dropped from the database tables. In the Twitter daily stocks table, the adjusted closing cost was identical to the closing cost and this column did not exist in the Facebook daily stocks table. In the Facebook data, Dividends and Stock Splits contained only the value "zero" and these columns were not shared with Twitter daily stocks table. In conclusion, because these columns contained no significant data the columns were dropped. 
+
+ The cleanup was performed via *Jupyter Notebook*, using the Pandas toolkit. Before loading the data into the associated database tables, the .csv files were converted into dataframes:
+
+Facebook Dataframe:
+
+ ![alt=""](images/FB_Clean_DataFrame.png)
+
+Twitter Dateframe:
+
+  ![alt=""](images/Twitter_Clean_DataFrame.png)
+
+### **Load**
+Using SQL file (which can be found in this repository as "schema.sql"), the following required Database and associated tables were created in PostgreSQL:
+- SocialMedia_stocks_DB (database)
+- fb_stocks (table)
+- twitter_stocks (table)
+
+Newly created tables are loaded with the values from csv by connecting jupyter notebook to PostGreSQL. Using sqlalchemy, created an engine in order to connect to the database. Data is loaded into database tables based on final data structure of dataframes.  

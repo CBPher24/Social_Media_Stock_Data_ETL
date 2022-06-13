@@ -40,3 +40,27 @@ Using SQL file (which can be found in this repository as "schema.sql"), the foll
     * twitter_stocks (table)
 
 Newly created tables are loaded with the values from csv by connecting jupyter notebook to the database. Using sqlalchemy, created an engine in order to connect to the database. Data is loaded into database tables based on final data structure of dataframes.  
+
+## **Instructions**
+
+### **Tools Needed**
+Will need to have the following tools to recreate or try to update the data:
+Access to download from Kaggle
+Jupyter Notebook environment running at least Python3 with the following modules installed:
+- Pandas
+- Sqlalchemy
+- psycopg2
+- Postgresql installed and your login credentials
+
+### **Extracting Data**
+- Using the links provide, go to each of the data sets’ site and top right of the data click download. Twitter just had one CSV, Facebook it the data titled “FB_stock_history”.
+- Take the data and put it in the “Resources” folder inside the repository. Changing each name to reflect the following: Twitter data name “Twitter_DailyStock” , Facebook data name “FB_Dailystock”.
+### **Transform and Load Data**
+- Make sure to have all tools installed and in place
+- For the jupyter file to run smooth, set up a config.py file in the repository containing the following:
+    * username = “your_username”
+    * password = “your_password”
+- In Postgress PGadmin4, create a  new database titled “SocialMedia_stocks_DB”
+- Run Jupyter notebook file, it will cleanup and append the new data to the created SQL database
+## **Usage**
+Now with data transformed, an analyst can perform quick SQL queries to compare and analyze these two social companies to see how they performed on the stock market.
